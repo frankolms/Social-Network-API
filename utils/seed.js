@@ -12,11 +12,9 @@ connection.once("open", async () => {
   await User.deleteMany({});
 
   const users = [];
-  const usernames = [];
 
   for (let i = 0; i < 20; i++) {
     const username = getRandomName();
-    usernames.push(username);
     const email = username.replace(" ", "") + "@email.com";
 
     const userThought = await Thought.create({
