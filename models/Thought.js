@@ -12,7 +12,13 @@ const thoughtSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: Date.now,
+      get: function (value) {
+        const date = new Date(value);
+        formattedDate =
+          date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+        return formattedDate;
+      },
     },
     username: {
       type: String,
@@ -22,6 +28,7 @@ const thoughtSchema = new Schema(
   },
   {
     toJSON: {
+      getters: true,
       virtuals: true,
     },
   }
