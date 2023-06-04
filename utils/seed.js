@@ -15,7 +15,8 @@ connection.once("open", async () => {
 
   for (let i = 0; i < 20; i++) {
     const username = getRandomName();
-    const email = username.replace(" ", "") + "@email.com";
+    const createEmail = username.replace(" ", "") + "@email.com";
+    const email = createEmail.toLowerCase();
 
     const userThought = await Thought.create({
       thoughtText: getRandomThought(),
